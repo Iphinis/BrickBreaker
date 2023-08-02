@@ -1,0 +1,59 @@
+<Brick>:
+    canvas:
+        Color:
+            rgba: 0, 0, 0, self.a
+        Line:
+            width: 2
+            rectangle: (self.x, self.y, self.width, self.height)
+        Color:
+            rgba: self.r,self.g,self.b,self.a
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Ball>:
+    size: 16,16
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+            source: "assets/textures/Ball.png"
+
+<Paddle>:
+    size: 80, 15
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/textures/Paddle.png"
+
+<BrickBreakerGame>:
+    ball: ball
+    paddle: paddle
+
+    Label:
+        font_size: 20
+        center_x: 75
+        center_y: 25
+        text: "LEVEL: "+str(root.level)
+
+    Label:
+        font_size: 20
+        center_x: root.width/2
+        center_y: 25
+        text: "LIVES: "+str(root.lives)
+
+    Label:
+        font_size: 20
+        center_x: root.width-75
+        center_y: 25
+        text: "SCORE: "+str(root.score)
+
+    Ball:
+        id: ball
+        center: self.parent.center
+
+    Paddle:
+        id: paddle
+        center_x: root.width/2
+        center_y: 60
